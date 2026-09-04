@@ -1,0 +1,51 @@
+name: Part 1 Documentation Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  validate-part1:
+    name: Validate Part 1 planning deliverables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check /docs folder exists
+        run: test -d docs
+
+      - name: Check ERD is present
+        run: test -f docs/RaceDay_ERD.png
+
+      - name: Check API Endpoint Plan is present
+        run: test -f docs/RaceDay_API_Endpoint_Plan.md
+
+      - name: Check SQL Database Script is present
+        run: test -f docs/RaceDay_Database.sql
+
+      - name: Check README exists
+        run: test -f README.md
+
+      - name: Check SQL script is not empty
+        run: |
+          if [ ! -s docs/RaceDay_Database.sql ]; then
+            echo "docs/RaceDay_Database.sql exists but is empty"
+            exit 1
+          fi
+
+      - name: Check SQL script contains required table definitions
+        run: |
+          for table in Organisers Participants Events Categories Enrolments Results; do
+            if ! grep -qi "CREATE TABLE dbo.$table" docs/RaceDay_Database.sql; then
+              echo "Missing CREATE TABLE statement for $table"
+              exit 1
+            fi
+          done
+
+      - name: Summary
+        run: echo "All required Part 1 files are present and structured correctly."
