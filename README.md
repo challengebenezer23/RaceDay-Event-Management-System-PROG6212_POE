@@ -145,7 +145,6 @@ validates that the Part 1 submission is structured correctly:
 An unlisted YouTube video walking through the ERD decisions, the API
 endpoint plan, and a live run of the SQL script in SSMS:
 
-**YouTube Link:** `[https://youtu.be/fP-AAYYzE90]`
 
 
 
