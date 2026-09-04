@@ -147,9 +147,6 @@ endpoint plan, and a live run of the SQL script in SSMS:
 
 **YouTube Link:** `[PASTE YOUR UNLISTED YOUTUBE LINK HERE]`
 
-See [`VIDEO_PRESENTATION_SCRIPT.md`](VIDEO_PRESENTATION_SCRIPT.md) for the
-full recording script and checklist used to prepare this video.
-
 
 
 
