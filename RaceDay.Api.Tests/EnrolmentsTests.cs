@@ -40,6 +40,14 @@ public class EnrolmentsTests : IClassFixture<RaceDayApiFactory>
         var registerResponse = await client.PostAsJsonAsync("/api/auth/register", register);
         registerResponse.EnsureSuccessStatusCode();
 
+        var loginResponse = await client.PostAsJsonAsync("/api/auth/login", new LoginRequest
+        {
+            Email = email,
+            Password = "TestPassword123"
+        });
+
+        loginResponse.EnsureSuccessStatusCode();
+
         return client;
     }
 
