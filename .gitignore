@@ -1,0 +1,18 @@
+# Visual Studio / .NET (added ahead of Part 2 API development)
+bin/
+obj/
+*.user
+.vs/
+
+# SQL Server
+*.mdf
+*.ldf
+*.ndf
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp

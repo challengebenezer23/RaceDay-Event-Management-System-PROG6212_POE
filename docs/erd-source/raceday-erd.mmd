@@ -1,0 +1,69 @@
+%% ENROLMENTS is a resolver (associative) entity: Participants can enter
+%% many Events, and each Event can have many Participants, which is a
+%% many-to-many relationship. ENROLMENTS resolves this many-to-many by
+%% sitting between PARTICIPANTS and EVENTS, additionally recording which
+%% CATEGORIES the participant is racing in for that event.
+erDiagram
+  ORGANISERS ||--o{ EVENTS : creates
+  EVENTS ||--o{ CATEGORIES : offers
+  EVENTS ||--o{ ENROLMENTS : receives
+  PARTICIPANTS ||--o{ ENROLMENTS : makes
+  CATEGORIES ||--o{ ENROLMENTS : selected_in
+  ENROLMENTS ||--o| RESULTS : produces
+  ORGANISERS ||--o{ RESULTS : records
+
+  ORGANISERS {
+    int OrganiserID PK
+    string FullName
+    string Email
+    string PasswordHash
+    string PhoneNumber
+    string OrganisationName
+    datetime CreatedAt
+  }
+  PARTICIPANTS {
+    int ParticipantID PK
+    string FullName
+    string Email
+    string PasswordHash
+    string PhoneNumber
+    date DateOfBirth
+    string EmergencyContactName
+    string EmergencyContactPhone
+    datetime CreatedAt
+  }
+  EVENTS {
+    int EventID PK
+    int OrganiserID FK
+    string EventName
+    string Description
+    date EventDate
+    string Location
+    decimal Distance
+    string EventType
+    datetime CreatedAt
+  }
+  CATEGORIES {
+    int CategoryID PK
+    int EventID FK
+    string CategoryName
+    int MinAge
+    int MaxAge
+    decimal DistanceKM
+  }
+  ENROLMENTS {
+    int EnrolmentID PK
+    int ParticipantID FK
+    int EventID FK
+    int CategoryID FK
+    datetime EnrolmentDate
+    string Status
+  }
+  RESULTS {
+    int ResultID PK
+    int EnrolmentID FK
+    int FinishTimeSeconds
+    int FinishPosition
+    int RecordedByOrganiserID FK
+    datetime RecordedAt
+  }
