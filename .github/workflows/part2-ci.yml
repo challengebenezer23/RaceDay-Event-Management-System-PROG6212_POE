@@ -24,8 +24,8 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore RaceDay.sln
 
-      - name: Build (Release, warnings as errors)
-        run: dotnet build RaceDay.sln --no-restore --configuration Release
+         - name: Build solution
+        run: dotnet build RaceDay.sln --configuration Release --no-restore --verbosity normal
 
       - name: Run xUnit test suite
         run: >
