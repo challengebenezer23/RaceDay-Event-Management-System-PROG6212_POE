@@ -44,6 +44,15 @@ public class EventsTests : IClassFixture<RaceDayApiFactory>
         var registerResponse = await client.PostAsJsonAsync("/api/auth/register", register);
         registerResponse.EnsureSuccessStatusCode();
 
+        // Log in immediately so the server-side session is created and the session cookie
+        // is stored in the HttpClient. WebApplicationFactory's test client preserves cookies.
+        var loginResponse = await client.PostAsJsonAsync("/api/auth/login", new LoginRequest
+        {
+            Email = email,
+            Password = "TestPassword123"
+        });
+        loginResponse.EnsureSuccessStatusCode();
+
         return client;
     }
 
