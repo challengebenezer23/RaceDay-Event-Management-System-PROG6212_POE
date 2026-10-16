@@ -384,7 +384,7 @@ An unlisted YouTube video demonstrating the running API in Swagger UI
 rejected), a passing `dotnet test` run, and the green Part 2 GitHub Actions
 build.
 
-**YouTube Link:** `[PASTE YOUR UNLISTED YOUTUBE LINK HERE]`
+**YouTube Link:** `https://youtu.be/VhfIRaEolME `
 
 See [`VIDEO_PRESENTATION_SCRIPT_PART2.md`](VIDEO_PRESENTATION_SCRIPT_PART2.md)
 for the full recording script and checklist used to prepare this video.
