@@ -62,8 +62,8 @@ builder.Services.AddSwaggerGen(options =>
     {
         Title = "RaceDay API",
         Version = "v1",
-        Description = "RaceDay Event Management System - RESTful API for the South African road running, " +
-                       "walking and cycling community. Built against the Part 1 ERD and API Endpoint Plan."
+        Description = "PROG6212 PART 2: RaceDay-Event-Management System - RestFul API for the South African road running, " +
+                       "walking and cycling community." 
     });
 
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
